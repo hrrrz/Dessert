@@ -1,3 +1,7 @@
+/* =================== FONTS =================== */
+@import url("https://fonts.googleapis.com/css2?family=Carter+One&family=Montserrat:wght@100..900&display=swap");
+
+/* =================== CSS =================== */
 :root {
     --header-height: 3.5rem;
 
@@ -13,29 +17,69 @@
     /* =================== FONT =================== */
     --body-font: "Montserrat", sans-serif;
     --second-font: "Carter One", system-ui;
+    --biggest-font-size: 2.5rem;
+    --bigger-font-size: 1.5rem;
+    --h1-font-size: 1.5rem;
+    --h2-font-size: 1.25rem;
+    --h3-font-size: 1rem;
+    --normal-font-size: .938rem;
+    --small-font-size: .813rem;
+
+
+    /* =================== Z INDEX =================== */
+    --z-fixed: 100;
+    --z-tooltip: 10;
 
     /* =================== SHADOW =================== */
+    --shadow-small-img: drop-shadow(0 4px 16px hsla(353, 100%, 8%, .2));
     --shadow-big-img: drop-shadow(0 8px 24px hsla(353, 100%, 8%, .2));
 
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
+/* =================== BASE =================== */
 * {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
 }
 
+input,
+button,
 body {
     font-family: var(--body-font);
-    background-color: var(--body-color);
-    color: var(--text-color);
-    line-height: 1.6;
+    font-size: var(--normal-font-size);
 }
 
-h1, h2, h3 {
+body {
+    background-color: var(--body-color);
+    color: var(--text-color);
+}
+
+input,
+button {
+    outline: none;
+    border: none;
+}
+
+h1, h2, h3, h4 {
     color: var(--title-color);
     font-family: var(--second-font);
     font-weight: 400;
+    line-height: 120%;
+}
+
+/* remove list symbols */
+ul {
+    list-style: none;
+}
+  
+/* remove link underlines */
+a {
+    text-decoration: none;
 }
 
 img {
@@ -44,7 +88,7 @@ img {
     height: auto;
 }
 
-/* =================== Reuse Layout Class =================== */
+/* =================== Reuse CSS Class =================== */
 .container {
     max-width: 1120px;
     margin-inline: 1.5rem;
@@ -61,18 +105,19 @@ img {
 
 .section__title {
     text-align: center;
-    font-size: 2rem;
-    margin-bottom: 3rem;
+    font-size: var(--bigger-font-size);
+    margin-bottom: 2rem;
 }
 
 /* =================== BUTTON =================== */
 .button {
     display: inline-flex;
+    justify-content: center;
     background-color: var(--first-color);
     color: var(--white-color);
     padding: 1rem 1.5rem;
     border-radius: 4rem;
-    font-weight: 600;
+    font-weight: var(--font-semi-bold);
     text-decoration: none;
     box-shadow: 0 8px 24px hsla(353, 100%, 40%, .4);
     transition: background-color .3s;
@@ -85,6 +130,7 @@ img {
 /* =================== BACKGROUND =================== */
 .home {
     background-color: var(--body-color);
+    overflow: hidden;
 }
 .about {
     background-color: var(--container-color);
@@ -104,7 +150,7 @@ img {
 
 
 /* =================== HEADER =================== */
-.nav__list {
+/* .nav__list {
     display: flex;
     flex-direction: row;
     column-gap: 2.5rem;
@@ -114,7 +160,38 @@ img {
 .nav__logo-img {
     width: 7rem;
     vertical-align: middle;
+} */
+
+.header {
+    position: fixed;
+    width: 100%;
+    background-color: var(--body-color);
+    top: 0;
+    left: 0;
+    z-index: var(--z-fixed);
+    transition: box-shadow .4s;
 }
+
+.nav {
+    height: var(--header-height);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.nav__logo {
+    display: inline-flex;
+    align-items: center;
+    column-gap: .25rem;
+    font-family: var(--second-font);
+    color: var(--title-color);
+}
+
+.nav__logo-img {
+    width: 8rem;
+}
+
 
 /* =================== HOME =================== */
 .home__container {
@@ -145,16 +222,43 @@ img {
 }
 
 .home__plate {
-    width: 450px;
+    width: 500px;
+    max-width: none;
     position: absolute;
-    bottom: -4rem;
-    z-index: 1;
+    bottom: -8rem;
+    left: 50%;
+    transform: translateX(-50%);
+    filter: var(--shadow-big-img);
+}
+
+/* =================== ABOUT =================== */
+.about{
+    background-color: var(--container-color);
+}
+.about__container{
+    row-gap: 2rem;
+    padding-bottom: 2rem;
+  
+}
+.about__data{
+    text-align: center;
+    position: relative;
+}
+.about__data .section__title{
+    margin-bottom: 1rem;
+}
+.about__description{
+    margin-bottom: 2rem;
+}
+.about__img{
+    width: 320px;
+    justify-self: center;
     filter: var(--shadow-big-img);
 }
 
 
 /* =================== POPULAR =================== */
-.popular__content {
+/* .popular__content {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
     gap: 3rem;
@@ -184,6 +288,139 @@ img {
     font-size: 1.25rem;
     color: var(--first-color);
     margin-top: 1rem;
+} */
+
+.popular__container{
+    display: grid;
+    gap: 3rem;
+    justify-items: center;
+}
+.popular__content{
+    grid-template-columns: repeat(3, max-content);
+    justify-content: center;
+}
+.popular__data .section__title{
+    margin-bottom: 1rem;
+}
+.popular__description{
+    text-align: center;
+}
+.popular__card,.popular__img{
+    width: 200px;
+}
+.popular__img{
+    transition: transform .4s;
+}
+.popular__card:hover .popular__img{
+    transform: translateY(-0.5rem);
+}
+.popular__title{
+    font-size: var(--h3-font-size);
+    color: var(--first-color);
+    margin-top: 2rem;
+    text-align: center;
+}
+
+/* =================== RECIPE =================== */
+.recipe{
+    background-color: var(--container-color);
+}
+.recipe__container{
+    row-gap: 2rem;
+    padding-bottom: 2rem;
+}
+.recipe__image{
+    width: 60px;
+    filter: var(--shadow-small-img);
+}
+.recipe__name{
+    font-size: var(--normal-font-size);
+    margin-bottom: .25rem;
+}
+.recipe__description{
+    font-size: var(--small-font-size);
+}
+.recipe__ingredient{
+    display: flex;
+    align-items: center;
+    column-gap: .75rem;
+}
+.recipe__img{
+    width: 320px;
+    justify-self: unset;
+    filter: var(--shadow-big-img);
+}
+
+/* =================== PRODUCTS =================== */
+.products__container{
+    grid-template-columns: repeat(2, 1fr);
+    padding-top: 3.5rem;
+    gap: 5rem 1.5rem;
+}
+.products__card{
+    position: relative;
+    background-color: var(--container-color);
+    padding: 5rem .75rem 1.25rem 0.75rem;
+    border-radius: 1.5rem;
+    box-shadow: 0 8px 24px hsla(353, 100%, 8%, .1);
+    transition: box-shadow .4s;
+}
+.products__img{
+    width: 120px;
+    position: absolute;
+    top: -3.5rem;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    filter: var(--shadow-small-img);
+    transition: transform .4s;
+}
+  
+.products__button{
+    position: absolute;
+    bottom: 1.25rem;
+    right: 0.75rem;
+    background-color: var(--first-color);
+    color: var(--white-color);
+    padding: 4px;
+    border-radius: .5rem;
+    font-size: 1.5rem;
+    display: inline-flex;
+    box-shadow: 0 4px 16px hsla(353, 100%, 40%, .4);
+    transition: background-color .4s;
+    cursor: pointer;
+}
+.products__button:hover{
+    background-color: var(--first-color-alt);
+}
+.products__card:hover .products__img{
+    transform: translateY(-.5rem);
+}
+
+/* =================== CONTACT =================== */
+
+/*=============== SCROLL UP ===============*/
+.scrollup{
+    position: fixed;
+    right: 1rem;
+    bottom: -50%;
+    background-color: var(--body-color);
+    box-shadow: 0 4px 16px hsla(353, 100%, 8%, 0.2);
+    color: var(--title-color);
+    display: inline-flex;
+    padding: 6px;
+    font-size: 1.25rem;
+    border-radius: 0.5rem;
+    z-index: var(--z-tooltip);
+    transition: bottom 0.4s, transform 0.4s;
+}
+  
+.scrollup:hover{
+    transform: translateY(-0.5rem);
+}
+/* Show Scroll Up */
+.show-scroll{
+    bottom: 3rem;
 }
 
 /* =================== Different Screen =================== */
@@ -208,5 +445,10 @@ img {
 
     .home__plate {
         width: 800px;
+    }
+
+    .recipe__container {
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
     }
 }
