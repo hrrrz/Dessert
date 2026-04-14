@@ -65,7 +65,7 @@
             <section class="about section" id="about">
                 <div class="about__container container grid">
                     <div class="about__data">
-                        <h2 class="about__title">
+                        <h2 class="section__title">
                             Learn More About <br> Our History
                         </h2>
                         <p class="about__description">
@@ -90,7 +90,7 @@
             <section class="popular section" id="popular">
                 <div class="popular__container container grid">
                     <div class="popular__data">
-                        <h2 class="popular__title">
+                        <h2 class="section__title">
                             Dessert Map <br> Flavors of 5 Nations
                         </h2>
                         <p class="popular__description">
@@ -100,87 +100,28 @@
                         </p>
                     </div>
 
-                    <div class="popular__content grid">
-                        <article class="popular__card">
-                            <img src="img/popular-1.png" alt="France Dessert" class="popular__img">
-                            <h3 class="popular__title">France Dessert</h3>
-                        </article>
-            
-                        <article class="popular__card">
-                            <img src="img/popular-2.avif" alt="Italy Dessert" class="popular__img">
-                            <h3 class="popular__title">Italy Dessert</h3>
-                        </article>
-            
-                        <article class="popular__card">
-                            <img src="img/popular-3.png" alt="Austria Dessert" class="popular__img">
-                            <h3 class="popular__title">Austria Dessert</h3>
-                        </article>
+                    <div class="popular__swiper swiper">
+                        <img src="img/RedPlate.png" alt="RedPlate" class="popular__dish">
+
+                        <div class="swiper-wrapper">
+                            <article class="popular__card swiper-slide">
+                                <img src="img/popular-1.png" alt="France Dessert" class="popular__img">
+                                <h3 class="popular__title">France Dessert</h3>
+                            </article>
+
+                            <article class="popular__card swiper-slide">
+                                <img src="img/popular-2.avif" alt="Italy Dessert" class="popular__img">
+                                <h3 class="popular__title">Italy Dessert</h3>
+                            </article>
+
+                            <article class="popular__card swiper-slide">
+                                <img src="img/popular-3.png" alt="Austria Dessert" class="popular__img">
+                                <h3 class="popular__title">Austria Dessert</h3>
+
+                            </article>
+
+                        </div>
                     </div>
-                </div>
-            </section>
-
-            <!--=================== RECIPE ===================-->
-            <section class="recipe section">
-                <h2 class="section__title">
-                    Recipe
-                </h2>
-                <div class="recipe__container container grid">
-                    <div class="recipe__list grid">
-
-                        <div class="recipe__ingredient">
-                            <img src="img/recipe-heavy cream.png" alt="Heavy Cream" class="recipe__image">
-                            <div>
-                                <h3 class="recipe__name">Heavy Cream</h3>
-                                <p class="recipe__description">
-                                    500ml <br> Min. 35% fat content for maximum silkiness.
-                                </p>
-                            </div>   
-                        </div>
-
-                        <div class="recipe__ingredient">
-                            <img src="img/receipe-egg.png" alt="Egg Yolks" class="recipe__image">
-                            <div>
-                                <h3 class="recipe__name">Egg Yolks</h3>
-                                <p class="recipe__description">
-                                    5-6 Large <br>  Only use the egg yolks; that's the key to a silky smooth texture.
-                                    <br> Extra sugar for the torching.
-                                </p>
-                            </div>   
-                        </div>
-
-                        <div class="recipe__ingredient">
-                            <img src="img/recipe-sugar.webp" alt="Caster Sugar" class="recipe__image">
-                            <div>
-                                <h3 class="recipe__name">Caster Sugar</h3>
-                                <p class="recipe__description">
-                                    50g <br> Whisk into egg yolks for the custard base.
-                                </p>
-                            </div>   
-                        </div>
-
-                        <div class="recipe__ingredient">
-                            <img src="img/recipe-Vanilla Bean.png" alt="Vanilla Bean" class="recipe__image">
-                            <div>
-                                <h3 class="recipe__name">Vanilla Bean</h3>
-                                <p class="recipe__description">
-                                    1/2 Pod <br> Or 5ml high-quality vanilla bean paste
-                                </p>
-                            </div>   
-                        </div>
-
-                        <div class="recipe__ingredient">
-                            <img src="img/recipe-salt.png" alt="Salt" class="recipe__image">
-                            <div>
-                                <h3 class="recipe__name">Salt</h3>
-                                <p class="recipe__description">
-                                    A little bit <br> Balancing the sweetness and enhancing flavor.
-                                </p>
-                            </div>   
-                        </div>
-
-                    </div>
-                
-                    <img src="img/popular-1.png" alt="French Dessert Creme Brulee" class="recipe__img">
                 </div>
             </section>
 
@@ -191,7 +132,7 @@
                 </h2>
                 <div class="products__container container grid">
 
-                    <article class="products__card">
+                    <article class="products__card" id="creme-brulee-card">
                         <img src="img/popular-1.png" alt="Creme Brulee" class="products__img">
                         <h3 class="products__name"> Creme Brulee </h3>
                         <button class="products__button" aria-label="View Creme Brulee">
@@ -245,6 +186,91 @@
             <!--=================== CONTACT ===================-->
 
         </main>
+
+            <!--=================== RECIPE MODAL===================-->
+            <div class="recipe-modal" id="recipe-modal">
+                <div class="recipe-modal__overlay" id="modal-overlay"></div>
+                <div class="recipe-modal__content">
+                    <button class="recipe-modal__close" id="modal-close">
+                        <i class="ri-close-large-line"></i>
+                    </button>
+
+                    <!-- Title -->
+                    <h2 class="recipe-modal__title">Creme Brulee</h2>
+                    <p class="recipe-modal__country">France Dessert</p>
+
+                    <!-- Description -->
+                    <p class="recipe-modal__desc">
+                        Crème brûlée's history is a contested blend of French, English, and Spanish culinary traditions dating back to the 17th century. While similar custards existed earlier, the first known printed recipe for modern crème brûlée appeared in François Massialot's 1691 French cookbook, <em>Le Cuisinier Royal et Bourgeois</em>. The dish, meaning "burnt cream," gained global fame after being revived in the 1980s by New York's Le Cirque restaurant.
+                    </p>
+
+                    <!-- Ingredients section -->
+                    <h3 class="recipe-modal__ing-title">Fresh And <br> Natural Ingredients Recipe</h3>
+
+                    <div class="recipe-modal__body">
+                        <div class="recipe-modal__list">
+                            <div class="recipe-modal__ingredient">
+                                <img src="img/recipe-heavy cream.png" alt="Heavy Cream" class="recipe-modal__ing-img">
+                                <div>
+                                    <h3 class="recipe-modal__ing-name">Heavy Cream</h3>
+                                    <p class="recipe-modal__ing-desc">500 ml <br> Min. 35% fat content for maximum silkiness.</p>
+                                </div>
+                            </div>
+
+                            <div class="recipe-modal__ingredient">
+                                <img src="img/receipe-egg.png" alt="Egg Yolks" class="recipe-modal__ing-img">
+                                <div>
+                                   <h3 class="recipe-modal__ing-name">Egg Yolks</h3>
+                                   <p class="recipe-modal__ing-desc">5-6 Large <br> Only use the egg yolks; that's the key to a silky smooth texture. <br> Extra sugar for the torching.</p>
+                                </div>
+                            </div>
+
+                            <div class="recipe-modal__ingredient">
+                                <img src="img/recipe-sugar.webp" alt="Caster Sugar" class="recipe-modal__ing-img">
+                                <div>
+                                   <h3 class="recipe-modal__ing-name">Caster Sugar</h3>
+                                   <p class="recipe-modal__ing-desc">50g <br> Whisk into egg yolks for the custard base.</p>
+                                </div>
+                            </div>
+
+                            <div class="recipe-modal__ingredient">
+                                <img src="img/recipe-Vanilla Bean.png" alt="Vanilla Bean" class="recipe-modal__ing-img">
+                                <div>
+                                   <h3 class="recipe-modal__ing-name">Vanilla Bean</h3>
+                                   <p class="recipe-modal__ing-desc">1/2 Pod <br> Or 5ml high-quality vanilla bean paste.</p>
+                                </div>
+                            </div>
+
+                            <div class="recipe-modal__ingredient">
+                                <img src="img/recipe-salt.png" alt="Salt" class="recipe-modal__ing-img">
+                                <div>
+                                   <h3 class="recipe-modal__ing-name">Salt</h3>
+                                   <p class="recipe-modal__ing-desc">A little bit <br> Balancing the sweetness and enhancing flavor.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <img src="img/popular-1.png" alt="French Dessert Creme Brulee" class="recipe-modal__dish-img">
+
+                    </div>
+
+                    <!-- Steps Section -->
+                    <div class="recipe-modal__section">
+                        <h3 class="recipe-modal__subtitle">Steps</h3>
+                        <ol class="recipe-modal__steps">
+                            <li>Preheat oven to 150°C. Heat cream with vanilla until just simmering.</li>
+                            <li>Whisk egg yolks with sugar until pale and slightly thickened.</li>
+                            <li>Slowly pour the warm cream into the yolk mixture, stirring constantly.</li>
+                            <li>Strain through a fine sieve, add a pinch of salt, pour into ramekins.</li>
+                            <li>Bake in a water bath for 40–45 min until set with a slight jiggle in the center.</li>
+                            <li>Cool to room temperature, then refrigerate for at least 2 hours.</li>
+                            <li>Before serving, sprinkle an even layer of sugar and torch until caramelized.</li>
+                        </ol>
+                     </div>
+
+                </div>
+            </div>
+            
 
         <!--=================== SCROLL UP ===================-->
         <a href="#" class="scrollup" id="scroll-up" aria-label="Scroll to top">
