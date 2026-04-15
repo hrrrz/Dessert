@@ -52,21 +52,26 @@ window.addEventListener('scroll', scrollActive);
 
 
 /*=============== SCROLL REVEAL ANIMATION===============*/
-const sr = ScrollReveal({
-    origin: 'top',
-    distance: '60px',
-    duration: 2500,
-    delay: 300,
-})
+const isMobile = window.matchMedia('(max-width: 768px)').matches
 
+if (!isMobile) {
+    const sr = ScrollReveal({
+        origin: 'top',
+        distance: '60px',
+        duration: 2500,
+        delay: 300,
+    })
 
-sr.reveal(`.home__data , .popular__container`)
-sr.reveal(`.home__plate`,{delay:700,distance:'100px',origin:'right'})
-sr.reveal(`.home__cake`,{delay:1400,distance:'100px',origin:'bottom',rotate:{z:-90},afterReveal: el => el.classList.add('cake-float')})
-sr.reveal(`.home__ingredient`,{delay:2000,interval:100})
-sr.reveal(`.about__data, .recipe__list`,{origin:'right'})
-sr.reveal(`.about__img, .recipe__img`,{origin:'left'})
-sr.reveal(`.products__card`,{interval:100})
+    sr.reveal(`.home__data , .popular__container`)
+    sr.reveal(`.home__plate`,{delay:700,distance:'100px',origin:'right'})
+    sr.reveal(`.home__cake`,{delay:1400,distance:'100px',origin:'bottom',rotate:{z:-90},afterReveal: el => el.classList.add('cake-float')})
+    sr.reveal(`.home__ingredient`,{delay:2000,interval:100})
+    sr.reveal(`.about__data, .recipe__list`,{origin:'right'})
+    sr.reveal(`.about__img, .recipe__img`,{origin:'left'})
+    sr.reveal(`.products__card`,{interval:100})
+} else {
+    document.querySelector('.home__cake')?.classList.add('cake-float')
+}
 
 /*=============== GENERATE MODALS FROM DATA ===============*/
 function generateModals() {
