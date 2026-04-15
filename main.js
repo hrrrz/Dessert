@@ -58,7 +58,7 @@ const sr = ScrollReveal({
 })
 
 
-sr.reveal(`.home__data , .popular__container, .footer`)
+sr.reveal(`.home__data , .popular__container,`)
 sr.reveal(`.home__plate`,{delay:700,distance:'100px',origin:'right'})
 sr.reveal(`.home__cake`,{delay:1400,distance:'100px',origin:'bottom',rotate:{z:-90},afterReveal: el => el.classList.add('cake-float')})
 sr.reveal(`.home__ingredient`,{delay:2000,interval:100})
