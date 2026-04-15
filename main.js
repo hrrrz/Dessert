@@ -38,10 +38,12 @@ const scrollActive = () => {
         const sectionId = section.getAttribute('id');
         const sectionsClass = document.querySelector('.nav__menu a[href*=' + sectionId + ']')
 
-        if (scrollDown > sectionTop && scrollDown <= sectionTop + sectionHeight) {
-            sectionsClass.classList.add('active-link');
-        }else{
-            sectionsClass.classList.remove('active-link')
+        if (sectionsClass) {
+            if (scrollDown > sectionTop && scrollDown <= sectionTop + sectionHeight) {
+                sectionsClass.classList.add('active-link');
+            } else {
+                sectionsClass.classList.remove('active-link')
+            }
         }
     });
 }
@@ -58,7 +60,7 @@ const sr = ScrollReveal({
 })
 
 
-sr.reveal(`.home__data , .popular__container,`)
+sr.reveal(`.home__data , .popular__container`)
 sr.reveal(`.home__plate`,{delay:700,distance:'100px',origin:'right'})
 sr.reveal(`.home__cake`,{delay:1400,distance:'100px',origin:'bottom',rotate:{z:-90},afterReveal: el => el.classList.add('cake-float')})
 sr.reveal(`.home__ingredient`,{delay:2000,interval:100})

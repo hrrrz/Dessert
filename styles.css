@@ -81,6 +81,7 @@ body {
     color: var(--text-color);
     padding-bottom: 100svh;
     overscroll-behavior-y: contain;
+    overflow-x: hidden;
 }
 
 input,
