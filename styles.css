@@ -80,6 +80,7 @@ body {
     background-color: var(--body-color);
     color: var(--text-color);
     padding-bottom: 100svh;
+    overscroll-behavior-y: contain;
 }
 
 input,
