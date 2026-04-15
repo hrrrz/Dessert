@@ -166,8 +166,40 @@ img {
 .popular {
     background-color: var(--body-color);
 }
-.products {
-    background-color: var(--container-color);
+#products {
+    background: linear-gradient(to bottom,
+        var(--body-color) 0%,
+        var(--container-color) 12%,
+        var(--container-color) 88%,
+        var(--body-color) 100%);
+}
+#products-italy {
+    background: linear-gradient(to bottom,
+        var(--container-color) 0%,
+        var(--body-color) 12%,
+        var(--body-color) 88%,
+        var(--container-color) 100%);
+}
+#products-austria {
+    background: linear-gradient(to bottom,
+        var(--body-color) 0%,
+        var(--container-color) 12%,
+        var(--container-color) 88%,
+        var(--body-color) 100%);
+}
+#products-japan {
+    background: linear-gradient(to bottom,
+        var(--container-color) 0%,
+        var(--body-color) 12%,
+        var(--body-color) 88%,
+        var(--container-color) 100%);
+}
+#products-america {
+    background: linear-gradient(to bottom,
+        var(--body-color) 0%,
+        var(--container-color) 12%,
+        var(--container-color) 88%,
+        var(--body-color) 100%);
 }
 .contact {
     background-color: var(--body-color);
@@ -250,6 +282,7 @@ img {
 
 .home__title {
     font-size: var(--biggest-font-size);
+    white-space: nowrap;
 }
 
 .home__data {
@@ -258,6 +291,7 @@ img {
 }
 
 .home__description {
+    margin-top: 1.5rem;
     margin-bottom: 1rem 2rem;
 }
 
@@ -333,10 +367,16 @@ img {
     top: -.85rem;
     margin-inline: auto;
 }
-.popular__card,.popular__img{
+.popular__card{
     width: 200px;
+    cursor: pointer;
+    color: inherit;
 }
 .popular__img{
+    width: 200px;
+    height: 200px;
+    object-fit: contain;
+    border-radius: .5rem;
     transform: scale(0.8) rotate(-90deg);
     transition: transform .4s;
 }
@@ -539,11 +579,11 @@ img {
 
     .home__data{
         text-align: initial;
-        margin-top: 2rem;
+        padding-left: 3rem;
     }
     .home__description{
         margin-bottom: 3.5rem;
-        padding-right: 6rem;
+        padding-right: 5rem;
     }
 
     .home__cake {
@@ -580,7 +620,7 @@ img {
         grid-template-columns: 1000px;
         justify-content: center;
         row-gap: 5rem;
-        padding-bottom: 3rem;
+        padding-bottom: 8rem;
     }
     .popular__data .section__title{
         margin-bottom: 1.5rem;
@@ -591,10 +631,14 @@ img {
     .popular__card,
     .popular__img{
         width: 350px;
+        height: 350px;
+    }
+    .popular__img{
+        object-fit: contain;
     }
     .popular__dish{
-        width: 390px;
-        top: -1.5rem;
+        width: 590px;
+        top: -6rem;
     }
     .popular__title{
         margin-top: 3rem;
@@ -629,6 +673,7 @@ img {
         grid-template-columns: repeat(3, 250px);
         justify-content: center;
         gap: 7.5rem 4rem;
+        padding-bottom: 5rem;
     }
     .products__card{
         padding: 10rem 1.5rem 1.5rem;
@@ -817,11 +862,13 @@ img {
     display: flex;
     flex-direction: column;
     gap: 1rem;
+    padding-left: 13rem;
 }
   
 .recipe-modal__dish-img {
     width: 100%;
     filter: var(--shadow-big-img);
+    margin-left: -5rem;
 }
   
 .recipe-modal__ingredient {
@@ -861,9 +908,11 @@ img {
 
 /* Step Section */
 .recipe-modal__section {
+    margin-top: 5.5rem;
     margin-bottom: 1.5rem;
     max-width: 600px;
     margin-inline: auto;
+    /* padding-left: 3rem; */
 }
   
 .recipe-modal__subtitle {
@@ -871,6 +920,7 @@ img {
     font-size: var(--bigger-font-size);
     color: var(--title-color);
     margin-bottom: 1.5rem;
+    /* text-align: center; */
 }
   
 .recipe-modal__steps {
