@@ -60,10 +60,10 @@ const sr = ScrollReveal({
 
 sr.reveal(`.home__data , .popular__container, .footer`)
 sr.reveal(`.home__plate`,{delay:700,distance:'100px',origin:'right'})
-sr.reveal(`.home__cake`,{delay:1400,distance:'100px',origin:'bottom',rotate:{z:-90}})
+sr.reveal(`.home__cake`,{delay:1400,distance:'100px',origin:'bottom',rotate:{z:-90},afterReveal: el => el.classList.add('cake-float')})
 sr.reveal(`.home__ingredient`,{delay:2000,interval:100})
-sr.reveal(`.about__data, .recipe__list, .contact__data`,{origin:'right'})
-sr.reveal(`.about__img, .recipe__img, .contact__image`,{origin:'left'})
+sr.reveal(`.about__data, .recipe__list`,{origin:'right'})
+sr.reveal(`.about__img, .recipe__img`,{origin:'left'})
 sr.reveal(`.products__card`,{interval:100})
 
 /*=============== GENERATE MODALS FROM DATA ===============*/
@@ -111,10 +111,30 @@ function generateModals() {
 
 generateModals()
 
+/*=============== RECIPE HINT ===============*/
+const recipeHint    = document.getElementById('recipe-hint')
+const recipeHintBtn = document.getElementById('recipe-hint-btn')
+let   hintTimer     = null
+
+const showRecipeHint = () => {
+    if (localStorage.getItem('dessert-hint-seen')) return
+    clearTimeout(hintTimer)
+    hintTimer = setTimeout(() => recipeHint.classList.add('show'), 600)
+}
+
+const dismissRecipeHint = () => {
+    recipeHint.classList.remove('show')
+    localStorage.setItem('dessert-hint-seen', '1')
+    clearTimeout(hintTimer)
+}
+
+recipeHintBtn.addEventListener('click', dismissRecipeHint)
+
 /*=============== RECIPE MODAL OPEN / CLOSE ===============*/
 document.querySelectorAll('.products__card[data-modal]').forEach(card => {
     card.addEventListener('click', () => {
         document.getElementById(card.dataset.modal).classList.add('active')
+        showRecipeHint()
     })
 })
 
@@ -130,4 +150,55 @@ document.addEventListener('click', e => {
     const step = e.target.closest('.recipe-modal__steps li')
     if (ing)  ing.classList.toggle('done')
     if (step) step.classList.toggle('done')
+})
+
+/*=============== RECIPE SEARCH ===============*/
+const searchInput   = document.getElementById('search-input')
+const searchResults = document.getElementById('search-results')
+const searchEmpty   = document.getElementById('search-empty')
+const searchModal   = document.getElementById('search-modal')
+
+const openSearchModal = () => {
+    searchModal.classList.add('active')
+    searchInput.focus()
+}
+
+const closeSearchModal = () => {
+    searchModal.classList.remove('active')
+    searchInput.value = ''
+    searchResults.innerHTML = ''
+    searchEmpty.style.display = 'none'
+}
+
+document.getElementById('nav-search-btn').addEventListener('click', openSearchModal)
+document.getElementById('search-modal-close').addEventListener('click', closeSearchModal)
+document.getElementById('search-modal-overlay').addEventListener('click', closeSearchModal)
+
+searchInput.addEventListener('input', () => {
+    const query = searchInput.value.trim().toLowerCase()
+    if (!query) {
+        searchResults.innerHTML = ''
+        searchEmpty.style.display = 'none'
+        return
+    }
+
+    const matches = recipesData.filter(r =>
+        r.name.toLowerCase().includes(query) ||
+        r.country.toLowerCase().includes(query))
+
+    searchResults.innerHTML = matches.map(r => `
+        <article class="products__card" data-modal="${r.id}">
+            <img src="${r.image}" alt="${r.name}" class="products__img">
+            <h3 class="products__name">${r.name}</h3>
+        </article>`).join('')
+
+    searchEmpty.style.display = matches.length === 0 ? 'block' : 'none'
+
+    searchResults.querySelectorAll('.products__card[data-modal]').forEach((card, i) => {
+        card.style.animationDelay = `${i * 60}ms`
+        card.addEventListener('click', () => {
+            closeSearchModal()
+            document.getElementById(card.dataset.modal).classList.add('active')
+        })
+    })
 })

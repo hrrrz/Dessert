@@ -33,7 +33,7 @@
                     <li class="nav__item"><a href="#about" class="nav__link">About</a></li>
                     <li class="nav__item"><a href="#popular" class="nav__link">Popular</a></li>
                     <li class="nav__item"><a href="#products" class="nav__link">Products</a></li>
-                    <li class="nav__item"><a href="#contact" class="nav__link">Contact</a></li>
+                    <li class="nav__item"><button class="nav__search-btn" id="nav-search-btn"><i class="ri-search-line"></i></button></li>
                 </ul>
                 </div>
             </nav>
@@ -306,9 +306,51 @@
                 </div>
             </section>
 
+            <!--=================== SEARCH MODAL ===================-->
+            <div class="search-modal" id="search-modal">
+                <div class="search-modal__overlay" id="search-modal-overlay"></div>
+                <div class="search-modal__content">
+                    <button class="search-modal__close" id="search-modal-close"><i class="ri-close-large-line"></i></button>
+                    <div class="search-modal__form">
+                        <input type="text" id="search-input" class="search__input" placeholder="Search by name or country…">
+                        <i class="ri-search-line search__icon"></i>
+                    </div>
+                    <p class="search-modal__empty" id="search-empty">No desserts found.</p>
+                    <div class="search-modal__results products__container grid" id="search-results"></div>
+                </div>
+            </div>
+
         </main>
 
             
+
+        <!--=================== RECIPE HINT ===================-->
+        <div class="recipe-hint" id="recipe-hint" aria-live="polite">
+            <div class="recipe-hint__icon"><i class="ri-cursor-line"></i></div>
+            <div class="recipe-hint__body">
+                <p class="recipe-hint__title">Interactive Checklist</p>
+                <p class="recipe-hint__desc">Click any ingredient or step to mark it as done</p>
+                <div class="recipe-hint__demo">
+                    <span class="recipe-hint__demo-item">🧈 Butter</span>
+                    <span class="recipe-hint__demo-item recipe-hint__demo-item--done">🥚 Eggs</span>
+                </div>
+            </div>
+            <button class="recipe-hint__btn" id="recipe-hint-btn">Got it!</button>
+        </div>
+
+        <!--=================== FOOTER ===================-->
+        <footer class="footer">
+            <div class="footer__container">
+                <p class="footer__sub">Made with love &amp; sugar</p>
+                <h1 class="footer__name">Haoran Zhang</h1>
+                <p class="footer__copy">&copy; 2026 · Dessert World</p>
+            </div>
+            <span class="footer__deco footer__deco--1">🍰</span>
+            <span class="footer__deco footer__deco--2">🍩</span>
+            <span class="footer__deco footer__deco--3">🍫</span>
+            <span class="footer__deco footer__deco--4">🧁</span>
+            <span class="footer__deco footer__deco--5">🍪</span>
+        </footer>
 
         <!--=================== SCROLL UP ===================-->
         <a href="#" class="scrollup" id="scroll-up" aria-label="Scroll to top">
