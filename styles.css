@@ -634,6 +634,10 @@ img {
     transform: translateY(-.5rem);
 }
 
+.products__name{
+    text-align: center;
+}
+
 /* =================== CONTACT =================== */
 
 
